@@ -80,6 +80,8 @@ int main(int argc, char* argv[]) {
   
   int num_blocks = (N + block_size - 1) / block_size;
 
+  std::cout<<"num_blocks: "<<num_blocks<<std::endl;
+
   DEF_TIMER(cuda_call);
   START_TIMER(cuda_call);
   cudaDeviceSynchronize();
