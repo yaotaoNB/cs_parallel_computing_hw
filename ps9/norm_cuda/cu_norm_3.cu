@@ -21,6 +21,17 @@ void dot0(int n, float* a, float* x, float* y) {
   __syncthreads();
 
   // WRITE ME
+  for(size_t s = blockDim.x/2; s>0; s>>=1){
+    if(tid < s){
+      sdata[tid] += sdata[tid + s];
+    }
+    __syncthreads();
+  }
+
+  if (tid == 0) {
+    a[blockIdx.x] = sdata[0];
+  }
+
 }
 
 size_t frob(size_t size) {

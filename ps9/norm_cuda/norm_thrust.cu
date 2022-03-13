@@ -54,8 +54,7 @@ T two_norm_sequential(const std::vector<T>& v) {
 
 template<typename T>
 T norm_thrust(const thrust::device_vector<T>& x) {
-  T sum = 0;
-  /* Write Me */
+  T sum = thrust::reduce(x.begin(), x.end(), 0);
   return std::sqrt(sum);
 }
 
